@@ -1,5 +1,3 @@
-# 6.00x Problem Set 7: Simulating robots
-
 import math
 import random
 
@@ -8,11 +6,6 @@ import pylab
 
 # For Python 2.7:
 from ps7_verify_movement27 import testRobotMovement
-
-# If you get a "Bad magic number" ImportError, comment out what's above and
-# uncomment this line (for Python 2.6):
-# from ps7_verify_movement26 import testRobotMovement
-
 
 # === Provided class Position
 class Position(object):
@@ -57,8 +50,6 @@ class Position(object):
     def __str__(self):  
         return "(%0.2f, %0.2f)" % (self.x, self.y)
 
-
-# === Problem 1
 class RectangularRoom(object):
     """
     A RectangularRoom represents a rectangular region containing clean or dirty
@@ -212,7 +203,7 @@ class Robot(object):
         """
         raise NotImplementedError # don't change this!
 
-# === Problem 2
+
 class StandardRobot(Robot):
     """
     A StandardRobot is a Robot with the standard movement strategy.
@@ -237,7 +228,6 @@ class StandardRobot(Robot):
 ##testRobotMovement(StandardRobot, RectangularRoom)
 
 
-# === Problem 3
 def runSimulation(num_robots, speed, width, height, min_coverage, num_trials,
                   robot_type):
     """
@@ -275,16 +265,6 @@ def runSimulation(num_robots, speed, width, height, min_coverage, num_trials,
         #anim.done()
     return float(totaltime/num_trials)
 
-#print 'testing now'
-#testing runSimulation
-#print runSimulation(1, 1.0, 10, 12, 0.96, 1000, StandardRobot)
-#print runSimulation(1, 1.0, 5, 5, 1.0, 30, StandardRobot)
-#print runSimulation(1, 1.0, 10, 10, 0.75, 30, StandardRobot)
-#print runSimulation(1, 1.0, 10, 10, 0.9, 30, StandardRobot)
-#print runSimulation(1, 1.0, 20, 20, 1.0, 30, StandardRobot)
-#print runSimulation(3, 1.0, 20, 20, 1.0, 30, StandardRobot)
-
-# === Problem 4
 class RandomWalkRobot(Robot):
     """
     A RandomWalkRobot is a robot with the "random walk" movement strategy: it
@@ -302,23 +282,6 @@ class RandomWalkRobot(Robot):
             self.dir = int(360 * random.random())
         self.pos = self.pos.getNewPosition(self.dir, self.speed)
         self.room.cleanTileAtPosition(self.pos)
-
-
-# === Problem 5
-#
-# 1) Write a function call to showPlot1 that generates an appropriately-labeled
-#     plot.
-#
-#       (... your call here ...)
-#
-
-#
-# 2) Write a function call to showPlot2 that generates an appropriately-labeled
-#     plot.
-#
-#       (... your call here ...)
-#
-#
 
 def showPlot1(title, x_label, y_label):
     """
@@ -360,6 +323,3 @@ def showPlot2(title, x_label, y_label):
     pylab.xlabel(x_label)
     pylab.ylabel(y_label)
     pylab.show()
-    
-#showPlot1("Time It Takes 1 - 10 Robots To Clean 80% Of A Room","Number of robots","Time-steps")
-showPlot2("Time It Takes A Robot To Clean 80% Of Variously Sized Rooms","Number of robots","Time-steps")
